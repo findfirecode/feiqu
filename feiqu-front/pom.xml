@@ -49,8 +49,6 @@
             <scope>test</scope>
             <version>4.12</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -73,15 +71,6 @@
         <finalName>${artifactId}</finalName>
         <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*</include>
-                </includes>
-            </resource>
-        </resources>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -95,10 +84,28 @@
                     <configuration>
                         <encoding>utf-8</encoding>
                         <useDefaultDelimiters>true</useDefaultDelimiters>
+                        <includeEmptyDirs>true</includeEmptyDirs>
+                        <resources>
+                            <resource>
+                                <directory>src/main/resources</directory>
+                                <filtering>true</filtering>
+                                <excludes>
+                                    <exclude>**/*.woff</exclude>
+                                    <exclude>**/*.woff2</exclude>
+                                    <exclude>**/*.ttf</exclude>
+                                </excludes>
+                            </resource>
+                        </resources>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
     </build>
     
 </project>
